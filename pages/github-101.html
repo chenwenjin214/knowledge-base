@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub 生存指南 · 大一版</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<nav class="site-nav">
+  <div class="inner">
+    <a class="brand" href="../index.html">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      我的知识库
+    </a>
+    <span class="spacer"></span>
+    <a class="navlink" href="../index.html">首页</a>
+    <a class="navlink home" href="../index.html">全部文章</a>
+  </div>
+</nav>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    给计算机大一新生的 GitHub 地图
+  </div>
+  <h1>GitHub 生存指南<br><em>从"只会看 README"到"能把项目跑起来"</em></h1>
+  <p class="lede">
+    你现在的状态不是"学不会",而是缺一张地图。GitHub 看着是一堆按钮,其实只是三样东西叠在一起:
+    <b>网盘</b>(存代码)、<b>时光机</b>(存历史)、<b>广场</b>(找人合作)。
+    剩下的功能,都是这三样的排列组合。
+  </p>
+  <div class="hr"></div>
+</header>
+
+<div class="strip">
+  <div class="strip-title">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-4 12.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26A7 7 0 0 0 12 2z"/></svg>
+    只需要先掌握这三件事
+  </div>
+  <ul>
+    <li><span class="num">1</span><span><b>clone</b> —— 把项目从云端搬到你的电脑,能跑能改。这是"用到我的电脑上"的唯一入口。</span></li>
+    <li><span class="num">2</span><span><b>branch(分支)</b> —— 在主线旁边开一条"草稿纸",改坏了随时扔掉,主线毫发无损。</span></li>
+    <li><span class="num">3</span><span><b>Pull Request</b> —— 把你的改动递给别人(或者递回给原作者),附带对比图,方便别人审阅。</span></li>
+  </ul>
+</div>
+
+<!-- ============ 01 ============ -->
+<section>
+  <div class="sec-head"><span class="sec-num">01</span><h2>八个词,一次讲完</h2></div>
+  <p class="sec-sub">不用背。把这八个词和你已经会用的东西对上号,后面所有操作都只是它们的组合。</p>
+
+  <div class="kv">
+    <div class="kv-row"><span class="kv-k">Repository</span><span class="kv-v"><b>仓库 / repo</b> —— 一个项目的完整文件夹,连同它的全部改动历史。比本地文件夹多了一份"时光机"。</span></div>
+    <div class="kv-row"><span class="kv-k">clone</span><span class="kv-v"><b>克隆</b> —— 把云端仓库下载到你的电脑。下载完你就能打开、运行、修改它。<b>只下载一份副本到本地</b>。</span></div>
+    <div class="kv-row"><span class="kv-k">fork</span><span class="kv-v"><b>复刻</b> —— 把别人的仓库原样复制一份到<b>你 GitHub 账号下</b>。副本归你,随便改也不影响原作者。</span></div>
+    <div class="kv-row"><span class="kv-k">branch</span><span class="kv-v"><b>分支</b> —— 仓库里的一条并行时间线。默认那条叫 <code>main</code>,你新开的那条是它的"草稿纸"。</span></div>
+    <div class="kv-row"><span class="kv-k">PR</span><span class="kv-v"><b>Pull Request</b> —— "我的改动在这里,请合并进你的 main"。附带逐行对比、评论区、自动测试结果。</span></div>
+    <div class="kv-row"><span class="kv-k">Issue</span><span class="kv-v"><b>议题</b> —— 公开的"待办本 + 讨论区"。报错时先搜 Issue,八成有人问过同样的问题。</span></div>
+    <div class="kv-row"><span class="kv-k">Star</span><span class="kv-v"><b>星标</b> —— 收藏夹 + 点赞。收藏过的项目在 <code>github.com/你的用户名?tab=stars</code> 里找得回来。</span></div>
+    <div class="kv-row"><span class="kv-k">Release</span><span class="kv-v"><b>发布版</b> —— 打过标签的稳定版本,常附带编译好的安装包。不想自己编译就下这里的。</span></div>
+  </div>
+
+  <div class="figure" style="margin-top:22px">
+    <svg viewBox="0 0 860 330" role="img" aria-label="GitHub 核心概念关系图">
+      <defs>
+        <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#2f6f5e"/>
+        </marker>
+        <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#c97b3f"/>
+        </marker>
+      </defs>
+
+      <!-- cloud box -->
+      <rect x="14" y="18" width="250" height="128" rx="16" fill="#fbfaf7" stroke="#e9e3d6"/>
+      <text x="30" y="44" font-family="Outfit" font-size="12" fill="#7c7a72" letter-spacing="1.5">GITHUB 云端</text>
+      <rect x="30" y="56" width="218" height="36" rx="10" fill="#fff" stroke="#e9e3d6"/>
+      <text x="44" y="79" font-family="Outfit" font-size="14.5" font-weight="600" fill="#14171e">别人的仓库 upstream</text>
+      <rect x="30" y="100" width="218" height="36" rx="10" fill="#fff" stroke="#e9e3d6"/>
+      <text x="44" y="123" font-family="Outfit" font-size="14.5" font-weight="600" fill="#14171e">你的仓库 main</text>
+
+      <!-- your fork -->
+      <rect x="300" y="18" width="250" height="128" rx="16" fill="#eef4f2" stroke="#2f6f5e" stroke-opacity=".35"/>
+      <text x="316" y="44" font-family="Outfit" font-size="12" fill="#2f6f5e" letter-spacing="1.5">你的账号空间</text>
+      <rect x="316" y="56" width="218" height="36" rx="10" fill="#fff" stroke="#2f6f5e" stroke-opacity=".28"/>
+      <text x="330" y="79" font-family="Outfit" font-size="14.5" font-weight="600" fill="#14171e">你的 Fork 副本</text>
+      <rect x="316" y="100" width="218" height="36" rx="10" fill="#fff" stroke="#2f6f5e" stroke-opacity=".28"/>
+      <text x="330" y="123" font-family="Outfit" font-size="14.5" font-weight="600" fill="#14171e">你的分支 feature/x</text>
+
+      <!-- your laptop -->
+      <rect x="586" y="18" width="258" height="128" rx="16" fill="#fdf6ef" stroke="#c97b3f" stroke-opacity=".35"/>
+      <text x="602" y="44" font-family="Outfit" font-size="12" fill="#c97b3f" letter-spacing="1.5">你的电脑(本地)</text>
+      <rect x="602" y="56" width="226" height="36" rx="10" fill="#fff" stroke="#c97b3f" stroke-opacity=".28"/>
+      <text x="616" y="79" font-family="Outfit" font-size="14.5" font-weight="600" fill="#14171e">clone 下来的文件夹</text>
+      <rect x="602" y="100" width="226" height="36" rx="10" fill="#fff" stroke="#c97b3f" stroke-opacity=".28"/>
+      <text x="616" y="123" font-family="Outfit" font-size="14.5" font-weight="600" fill="#14171e">你本地开的分支</text>
+
+      <!-- arrows row1 -->
+      <line x1="264" y1="74" x2="296" y2="74" stroke="#2f6f5e" stroke-width="2.2" marker-end="url(#ar)"/>
+      <text x="280" y="62" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#2f6f5e">fork</text>
+
+      <line x1="550" y1="74" x2="582" y2="74" stroke="#2f6f5e" stroke-width="2.2" marker-end="url(#ar)"/>
+      <text x="566" y="62" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#2f6f5e">clone</text>
+
+      <line x1="582" y1="118" x2="550" y2="118" stroke="#c97b3f" stroke-width="2.2" marker-end="url(#ar2)"/>
+      <text x="566" y="136" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#c97b3f">push</text>
+
+      <!-- PR arrow bottom -->
+      <path d="M 300 118 C 190 150, 190 190, 140 196 L 200 196" fill="none" stroke="#2f6f5e" stroke-width="2.2" marker-end="url(#ar)"/>
+      <text x="228" y="190" font-family="Outfit" font-size="12.5" font-weight="600" fill="#2f6f5e">④ Pull Request 递回原作者</text>
+      <text x="228" y="206" font-family="Outfit" font-size="11.5" fill="#7c7a72">(他同意后,你的改动进他的 main)</text>
+
+      <!-- merge back into own main -->
+      <path d="M 425 100 L 425 62" fill="none" stroke="#2f6f5e" stroke-width="1.6" stroke-dasharray="4 4" marker-end="url(#ar)"/>
+      <text x="437" y="84" font-family="Outfit" font-size="11.5" fill="#7c7a72">③ merge 合并回自己的 main</text>
+
+      <!-- caption strip inside -->
+      <rect x="14" y="228" width="830" height="88" rx="14" fill="#fbfaf7" stroke="#e9e3d6"/>
+      <text x="32" y="252" font-family="Outfit" font-size="12" fill="#7c7a72" letter-spacing="1.2">一个完整的循环</text>
+      <text x="32" y="276" font-family="Outfit" font-size="14" fill="#3a4256">① fork 复制一份 → ② clone 到本地 → ③ 改代码、commit、push → ④ 发 PR 给原作者</text>
+      <text x="32" y="300" font-family="Outfit" font-size="13" fill="#7c7a72">不想参与开源、只想自己用?那就跳过 ① 和 ④,只做 ② 和 ③ —— 直接 clone 然后本地改。</text>
+    </svg>
+    <div class="fig-cap">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c97b3f" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      <span>一句话区分两个最容易混的动作:<b>clone 是"拿到电脑",fork 是"拿到自己账号下"</b>。clone 不会在 GitHub 上留下任何痕迹,fork 会在你主页留下一个仓库。</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 ============ -->
+<section>
+  <div class="sec-head"><span class="sec-num">02</span><h2>我想把这个项目用到电脑上,到底点哪个?</h2></div>
+  <p class="sec-sub">这是你问的第一个问题,也是最该先分清的一个。答案取决于你打算"用完就走"还是"想参与进去"。</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th style="width:32%">你的真实目的</th><th style="width:30%">该做什么</th><th>为什么</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>只想把它跑起来看看 / 读源码学习</td>
+          <td><code>Code → Download ZIP</code><br>或 <code>git clone</code></td>
+          <td>你不需要在 GitHub 上留痕迹,下载到本地就够了。<b>不需要 fork。</b></td>
+        </tr>
+        <tr>
+          <td>想读代码 + 以后能记录自己的改动</td>
+          <td><code>git clone</code></td>
+          <td>clone 下来的文件夹带完整 git 历史,你在本地 commit 也有版本记录,只是不会自动同步给别人。</td>
+        </tr>
+        <tr>
+          <td>想改代码,然后把改动<strong>递回给原作者</strong></td>
+          <td><code>fork</code> → <code>clone</code> → 改 → <code>push</code> → <code>PR</code></td>
+          <td>你没有别人的仓库写权限,fork 是拿到一份"你有写权限的副本",PR 是把改动递回去的正式渠道。</td>
+        </tr>
+        <tr>
+          <td>想在<strong>自己主页</strong>上留一个"我做过这个"的记录</td>
+          <td><code>fork</code>(可以先不 clone)</td>
+          <td>fork 完仓库就在你名下了,点一下 star 也能收藏。fork 这个动作本身不需要下载到本地。</td>
+        </tr>
+        <tr>
+          <td>想在 GitHub 上直接改(不想装任何软件)</td>
+          <td><code>fork</code> → 网页上的 <code>Add file</code> → commit</td>
+          <td>浏览器就是编辑器,适合改 README、改几行代码、提文档纠正。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid2" style="margin-top:16px">
+    <div class="card">
+      <div class="icon-badge">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v12"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 0-9 9"/></svg>
+      </div>
+      <h3>不同项目都能 fork 吗?</h3>
+      <p style="font-size:14px;color:var(--ink-2);margin:0">
+        <b>绝大多数能。</b>少数例外:
+      </p>
+      <ul style="font-size:14px;color:var(--ink-2);padding-left:19px;margin:8px 0 0;display:grid;gap:5px">
+        <li>别人的<strong>私有</strong>仓库 —— 你没权限,fork 按钮根本不显示</li>
+        <li>某些<strong>组织</strong>仓库管理员禁用了 fork</li>
+        <li><strong>空仓库</strong>(只有 README、零次提交)不能被 fork</li>
+        <li>装了 GitHub App 生成的仓库,有时不行</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="icon-badge acc">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h4"/></svg>
+      </div>
+      <h3>能 fork ≠ 能随便用</h3>
+      <p style="font-size:14px;color:var(--ink-2);margin:0 0 8px">
+        这是很多人踩的坑。<b>License(许可证)</b>才决定你能不能拿去商用、能不能闭源、要不要署名:
+      </p>
+      <ul style="font-size:13.5px;color:var(--ink-2);padding-left:19px;margin:0;display:grid;gap:5px">
+        <li><code>MIT / Apache-2.0</code> —— 最宽松,商用也行,保留个署名就够</li>
+        <li><code>GPL</code> —— 有"传染性",你的衍生作品也得开源</li>
+        <li><code>AGPL</code> —— 连"提供服务"都算触发开源</li>
+        <li><strong>没有 LICENSE 文件</strong> —— 默认"保留所有权利",你其实没有授权</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top:16px">
+    <div class="icon-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+    </div>
+    <p><b>给你的实用建议:</b>先看项目根目录有没有 <code>LICENSE</code> 文件。写课程作业、跑通学习项目 → 基本没风险;以后想做成产品甚至商用 → 一定要看清楚,不确定就去找作者开个 Issue 问一句,作者通常很乐意说明。</p>
+  </div>
+</section>
+
+<!-- ============ 03 ============ -->
+<section>
+  <div class="sec-head"><span class="sec-num">03</span><h2>分支是什么,为什么要建分支</h2></div>
+  <p class="sec-sub">这是你问的第二个问题,也是新手最容易觉得"这有必要吗"的问题。看完这张图你就知道它为什么是整个 Git 的核心设计。</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 860 300" role="img" aria-label="Git 分支示意图">
+      <defs>
+        <marker id="gar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2f6f5e"/></marker>
+      </defs>
+
+      <!-- main line -->
+      <line x1="52" y1="212" x2="806" y2="212" stroke="#2f6f5e" stroke-width="2.6"/>
+      <circle cx="72" cy="212" r="7" fill="#fff" stroke="#2f6f5e" stroke-width="2.4"/>
+      <circle cx="192" cy="212" r="7" fill="#fff" stroke="#2f6f5e" stroke-width="2.4"/>
+      <circle cx="452" cy="212" r="7" fill="#fff" stroke="#2f6f5e" stroke-width="2.4"/>
+      <circle cx="632" cy="212" r="7" fill="#fff" stroke="#2f6f5e" stroke-width="2.4"/>
+      <circle cx="772" cy="212" r="7" fill="#fff" stroke="#2f6f5e" stroke-width="2.4"/>
+
+      <!-- branch up -->
+      <path d="M 192 212 C 192 150, 240 96, 300 96 L 520 96" fill="none" stroke="#c97b3f" stroke-width="2.6"/>
+      <circle cx="316" cy="96" r="7" fill="#fff" stroke="#c97b3f" stroke-width="2.4"/>
+      <circle cx="430" cy="96" r="7" fill="#fff" stroke="#c97b3f" stroke-width="2.4"/>
+      <path d="M 520 96 C 590 96, 610 150, 632 212" fill="none" stroke="#c97b3f" stroke-width="2.6" marker-end="url(#gar)"/>
+
+      <!-- labels -->
+      <text x="52" y="248" font-family="JetBrains Mono" font-size="12.5" fill="#2f6f5e" font-weight="500">main(主线)</text>
+      <text x="52" y="266" font-family="Outfit" font-size="12" fill="#7c7a72">永远保持"能跑"的状态</text>
+
+      <text x="300" y="76" font-family="JetBrains Mono" font-size="12.5" fill="#c97b3f" font-weight="500">feature/login(我的分支)</text>
+      <text x="300" y="58" font-family="Outfit" font-size="12" fill="#7c7a72">随便改,改坏了直接扔</text>
+
+      <text x="668" y="190" font-family="JetBrains Mono" font-size="12" fill="#7c7a72" font-weight="500">merge</text>
+      <text x="668" y="172" font-family="Outfit" font-size="12" fill="#7c7a72">合回主线</text>
+
+      <text x="316" y="122" font-family="JetBrains Mono" font-size="10.5" fill="#c97b3f">commit A</text>
+      <text x="430" y="122" font-family="JetBrains Mono" font-size="10.5" fill="#c97b3f">commit B</text>
+      <text x="72" y="192" font-family="JetBrains Mono" font-size="10.5" fill="#2f6f5e">c1</text>
+      <text x="192" y="192" font-family="JetBrains Mono" font-size="10.5" fill="#2f6f5e">c2</text>
+
+      <!-- side note -->
+      <rect x="52" y="22" width="760" height="26" rx="8" fill="#fbfaf7" stroke="#e9e3d6"/>
+      <text x="66" y="40" font-family="Outfit" font-size="12.5" fill="#7c7a72">main 一直是那条"能跑的线";分支是它的临时副本,合并完就并回去了</text>
+    </svg>
+    <div class="fig-cap">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c97b3f" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      <span>把分支想成<b>在文档副本上做修改</b>。你不会直接在原件上乱涂,所以也不该直接在 main 上乱改。</span>
+    </div>
+  </div>
+
+  <h3 style="margin-top:26px">建分支的三个真实理由</h3>
+  <div class="grid3" style="margin-top:14px">
+    <div class="card">
+      <div class="icon-badge">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>试错隔离</h3>
+      <p style="font-size:14px;color:var(--ink-2);margin:0">改崩了、跑不通了,切回 main 还是好的那个版本。相当于给代码买了份保险。</p>
+    </div>
+    <div class="card">
+      <div class="icon-badge">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h3>并行开发</h3>
+      <p style="font-size:14px;color:var(--ink-2);margin:0">你改登录、室友改搜索,同时进行互不干扰。做课程小组作业时这条太有用了。</p>
+    </div>
+    <div class="card">
+      <div class="icon-badge acc">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      </div>
+      <h3>好审阅</h3>
+      <p style="font-size:14px;color:var(--ink-2);margin:0">一个功能一个分支,PR 的 diff 就只包含这一个功能。作者一眼看完,合并也干净。</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top:16px">
+    <div class="icon-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-4 12.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26A7 7 0 0 0 12 2z"/></svg>
+    </div>
+    <p><b>一个人写代码也要开分支。</b>这是很多人一开始不理解、后来真香的点。养成"一个功能一条分支"的习惯后,你的 commit 历史会从"一堆乱改"变成一份能读的简历。分支名起得有意义:<code>feature/login</code>、<code>fix/crash-on-start</code>、<code>docs/add-examples</code>。</p>
+  </div>
+</section>
+
+<!-- ============ 04 ============ -->
+<section>
+  <div class="sec-head"><span class="sec-num">04</span><h2>从零到跑起来,四条命令</h2></div>
+  <p class="sec-sub">这是你真正需要的操作流程。命令只有四条,顺序也是固定的,照着抄就行。</p>
+
+  <div class="timeline">
+    <div class="step">
+      <div class="step-dot">1</div>
+      <h4>准备:先装 Git,再配一次身份</h4>
+      <p>Git 是装在你电脑上的工具(命令行),GitHub 是网站上的平台,两者不是一回事。装完 Git 后告诉它"你是谁":</p>
+      <div class="cmds">
+<span class="c">git config --global user.name "你的名字"</span><br>
+<span class="c">git config --global user.email "你的邮箱"</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-dot">2</div>
+      <h4>把项目搬到电脑上(clone)</h4>
+      <p>找到项目主页,点绿色 <code>Code</code> 按钮,复制 HTTPS 那个地址(以 <code>https://</code> 开头的那行),然后:</p>
+      <div class="cmds">
+<span class="c">git clone</span> https://github.com/作者/项目名.git
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-dot">3</div>
+      <h4>开个分支再动手</h4>
+      <p>永远不要直接在 main 上改。进到项目文件夹里,新建并切到一条自己的分支:</p>
+      <div class="cmds">
+<span class="c">cd</span> 项目名<br>
+<span class="c">git checkout -b</span> feature/my-first-try<br>
+<span class="c">git status</span>   <span style="color:#7c7a72"># 随时看当前状态,新手最该多用这个命令</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-dot">4</div>
+      <h4>改完 → 存一次 → 推上去</h4>
+      <p><code>commit</code> 是"存档",<code>push</code> 是"上传到云端"。改一点就存一次,别攒一大坨。</p>
+      <div class="cmds">
+<span class="c">git add</span> .<br>
+<span class="c">git commit -m</span> "加上登录功能"<br>
+<span class="c">git push -u origin</span> feature/my-first-try
+      </div>
+    </div>
+  </div>
+
+  <div class="grid2" style="margin-top:22px">
+    <div class="card">
+      <div class="icon-badge">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
+      <h3>懒得用命令行?</h3>
+      <p style="font-size:14px;color:var(--ink-2);margin:0 0 8px">两条路都通,选一条别换来换去:</p>
+      <ul style="font-size:13.5px;color:var(--ink-2);padding-left:19px;margin:0;display:grid;gap:5px">
+        <li><b>GitHub Desktop</b> —— 图形界面,点按钮完成 commit / push / 分支,新手最友好</li>
+        <li><b>VS Code 内置 Git</b> —— 编辑器左下角能看到当前分支,点一下就能切分支,改完文件旁边有"+"号一键 commit</li>
+        <li><b>Codespaces</b> —— 直接在浏览器里开一个云端 VS Code,电脑配置再烂也能用</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="icon-badge acc">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <h3>clone 下来跑不起来怎么办</h3>
+      <p style="font-size:14px;color:var(--ink-2);margin:0 0 8px">九成是这三件事,挨个查:</p>
+      <ul style="font-size:13.5px;color:var(--ink-2);padding-left:19px;margin:0;display:grid;gap:5px">
+        <li>README 里写了依赖没装 → 按它说的装(常见 <code>npm install</code> / <code>pip install -r requirements.txt</code>)</li>
+        <li>版本不对 → 看看有没有 <code>.nvmrc</code>、<code>requirements.txt</code>、<code>pyproject.toml</code></li>
+        <li>报错看不懂 → <b>把这个报错原文贴到该项目的 Issue 搜索框里</b>,大概率有人问过</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 ============ -->
+<section>
+  <div class="sec-head"><span class="sec-num">05</span><h2>怎么"回到上一个界面"—— 你说的回退</h2></div>
+  <p class="sec-sub">这个其实是浏览器的事,不是 GitHub 的事,所以很多人找不到。分开说:怎么回去,和怎么开两个窗口。</p>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="icon-badge">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v6h6"/><path d="M3.51 13a9 9 0 1 0 2.13-9.36L3 7"/></svg>
+      </div>
+      <h3>怎么回到上一页</h3>
+      <ul style="font-size:14px;color:var(--ink-2);padding-left:19px;margin:0;display:grid;gap:8px">
+        <li><b>浏览器后退</b>:<kbd>Alt</kbd>+<kbd>←</kbd> (Windows) / <kbd>Cmd</kbd>+<kbd>←</kbd> (Mac)。浏览器地址栏左边那个 <kbd>←</kbd> 也可以</li>
+        <li><b>GitHub 自己的返回箭头</b>:仓库页面左上角那个 <code>&lt;</code> 小箭头,点它直接回你来的地方</li>
+        <li><b>翻出搜索历史</b>:搜索框点一下,历史搜索记录会掉下来,直接选</li>
+        <li><b>翻浏览器全部历史</b>:<kbd>Ctrl</kbd>+<kbd>H</kbd>,或者 <kbd>Ctrl</kbd>+<kbd>T</kbd> 新标签页后直接输入关键词</li>
+        <li><b>GitHub 新标签页</b>:新标签页会显示你最近的仓库,点仓库名旁边的小箭头可以直接开新标签</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="icon-badge acc">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="14" height="14" rx="2"/><path d="M16 8h4a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-9a2 2 0 0 1-2-2v-4"/></svg>
+      </div>
+      <h3>"开两个窗口"怎么开</h3>
+      <p style="font-size:14px;color:var(--ink-2);margin:0 0 8px">你听说的那个技巧叫<b>后台标签页</b>,不用真开两个窗口:</p>
+      <ul style="font-size:13.5px;color:var(--ink-2);padding-left:19px;margin:0;display:grid;gap:6px">
+        <li><b>Windows / Linux</b>:<kbd>Ctrl</kbd> + 鼠标左键点链接 → 在后台新标签打开,当前页面不动</li>
+        <li><b>macOS</b>:<kbd>Cmd</kbd> + 鼠标左键</li>
+        <li><b>更省事</b>:鼠标中键(滚轮)直接点 → 新标签在后台打开</li>
+        <li>还有:浏览器 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd> 恢复刚关掉的标签页</li>
+        <li>想同时看两个仓库 → 拖一个标签页到窗口边缘,屏幕会分屏</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top:16px">
+    <div class="icon-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+    </div>
+    <p><b>为什么你会觉得"没找到回去的按钮"?</b>因为 GitHub 是个单页应用,地址栏的 URL 变了但它不给你明显的前进/后退条。<b>养成一个习惯:用中键/Ctrl+点击打开新链接</b>,当前页永远停在搜索结果上,想回去随时在原标签,想看新的关掉标签就行。这一招能解决你 80% 的"回不去"的问题。</p>
+  </div>
+</section>
+
+<!-- ============ 06 ============ -->
+<section>
+  <div class="sec-head"><span class="sec-num">06</span><h2>GitHub 实用技巧清单</h2></div>
+  <p class="sec-sub">下面这些是"用着用着突然发现原来还能这样"的那一类。按性价比排序。</p>
+
+  <h3 style="margin-top:24px">最被低估的一个:按 <kbd>?</kbd> 看快捷键</h3>
+  <p>在 GitHub 任意页面按 <kbd>?</kbd> 键,会弹出一整页快捷键说明。<b>这是整个 GitHub 里最值钱的一个键</b>,你之前所有"找不到按钮"的问题,八成在里面有答案。</p>
+
+  <div class="tbl-wrap" style="margin-top:14px">
+    <table>
+      <thead><tr><th style="width:22%">按键</th><th style="width:34%">作用</th><th>什么时候用</th></tr></thead>
+      <tbody>
+        <tr><td><code>s</code></td><td>在仓库页快速跳文件</td><td>输入文件名直达,比在文件树里一层层翻快十倍</td></tr>
+        <tr><td><code>t</code></td><td>全局文件搜索</td><td>不记得文件在哪个仓库时用</td></tr>
+        <tr><td><code>y</code></td><td>跳到自己的仓库</td><td>快速在自己的项目之间切换</td></tr>
+        <tr><td><code>g</code> 然后 <code>p</code> / <code>r</code> / <code>i</code></td><td>依次跳到 个人主页 / 仓库 / Issue</td><td>连续按两下的组合键,很顺手</td></tr>
+        <tr><td><code>n</code></td><td>打开通知</td><td>看 PR 有没有被回复、CI 有没有跑过</td></tr>
+        <tr><td><code>/</code></td><td>光标跳到搜索框</td><td>任何页面都能用,接着就能敲高级搜索语法</td></tr>
+        <tr><td><code>?</code></td><td>打开快捷键速查表</td><td><b>今天就可以按一次试试</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:28px">高级搜索语法:把"大海捞针"变成"精准定位"</h3>
+  <p>GitHub 的搜索框支持一整套限定符,写在搜索框里就能用,也可以叠着用。这是 GitHub 相对 Google 最大的优势 —— 因为它有结构化的元数据。</p>
+
+  <div class="tbl-wrap" style="margin-top:14px">
+    <table>
+      <thead><tr><th style="width:40%">语法</th><th>人话翻译</th></tr></thead>
+      <tbody>
+        <tr><td><code>in:name</code></td><td>只在项目名里找</td></tr>
+        <tr><td><code>in:readme</code></td><td>只在 README 里找 —— 搜"教程""资源"这类词时超好用</td></tr>
+        <tr><td><code>language:python</code></td><td>限定编程语言</td></tr>
+        <tr><td><code>stars:&gt;1000</code></td><td>只要一千星以上的项目</td></tr>
+        <tr><td><code>pushed:&gt;2025-01-01</code></td><td>最近还更新过的 —— <b>过滤掉没人维护的死项目最有效的一条</b></td></tr>
+        <tr><td><code>created:&gt;2025-06-01</code></td><td>最近才出现的(挖早期新项目)</td></tr>
+        <tr><td><code>topic:machine-learning</code></td><td>按主题标签找一整类</td></tr>
+        <tr><td><code>good-first-issues:&gt;5</code></td><td>有"适合新手"任务的仓库 —— 想做第一个 PR 就靠它</td></tr>
+        <tr><td><code>license:mit</code></td><td>按许可证筛(商用更放心)</td></tr>
+        <tr><td><code>archived:false</code></td><td>排除已归档的老项目</td></tr>
+        <tr><td><code>user:someone</code> / <code>org:github</code></td><td>搜某个人/某个组织下的仓库</td></tr>
+        <tr><td><code>NOT</code> / <code>-</code> / <code>OR</code> / <code>"精确短语"</code></td><td>标准布尔逻辑,和写代码一样</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="figure" style="margin-top:18px">
+    <svg viewBox="0 0 860 176" role="img" aria-label="高级搜索组合示例">
+      <rect x="0" y="0" width="860" height="176" rx="14" fill="#1f2430"/>
+      <text x="26" y="34" font-family="JetBrains Mono" font-size="11" fill="#7f8aa3" letter-spacing="1.5">真实的搜索框里长这样</text>
+
+      <rect x="20" y="48" width="820" height="42" rx="10" fill="#2b3240"/>
+      <text x="38" y="75" font-family="JetBrains Mono" font-size="14.5" fill="#8fd3bd">machine-learning</text>
+      <text x="214" y="75" font-family="JetBrains Mono" font-size="14.5" fill="#e8b98a">language:python</text>
+      <text x="410" y="75" font-family="JetBrains Mono" font-size="14.5" fill="#f0c99a">stars:&gt;1000</text>
+      <text x="530" y="75" font-family="JetBrains Mono" font-size="14.5" fill="#9fb3d9">pushed:&gt;2025-06-01</text>
+      <text x="726" y="75" font-family="JetBrains Mono" font-size="14.5" fill="#c3b1d9">topic:ai</text>
+
+      <text x="26" y="118" font-family="Outfit" font-size="13" fill="#9aa4b8">= 用 Python 写的、超过 1000 星、最近半年还在更新、打了 AI 标签的机器学习项目</text>
+      <text x="26" y="146" font-family="Outfit" font-size="12.5" fill="#6f7a8d">再加上 sort:stars 或 sort:updated 可以让结果按热度 / 最近更新排序</text>
+    </svg>
+    <div class="fig-cap">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c97b3f" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      <span>记不住语法就用高级搜索页 <code>github.com/search/advanced</code>,全图形化填写,不会写代码也能筛。另外搜索框按 <kbd>/</kbd> 聚焦,不用鼠标去够那个小框。</span>
+    </div>
+  </div>
+
+  <h3 style="margin-top:28px">别只看 README —— 判断一个项目靠不靠谱的五层</h3>
+  <p>你说"我只看 README",这其实是最容易踩坑的读法。README 是作者想让你看的,不是全部。按下面五层扫一遍,三十秒就知道这项目能不能用。</p>
+
+  <div class="tbl-wrap" style="margin-top:14px">
+    <table>
+      <thead><tr><th style="width:26%">看哪里</th><th style="width:38%">怎么看</th><th>说明什么</th></tr></thead>
+      <tbody>
+        <tr><td>About + 标签</td><td>右上角一句话描述和 topic 标签</td><td>它到底是什么,属于哪一类</td></tr>
+        <tr><td>文件结构</td><td>扫一眼根目录:有 <code>LICENSE</code> 吗?有 <code>tests/</code> 吗?有 <code>.github/workflows/</code> 吗?</td><td>有没有 <code>LICENSE</code> → 能不能用;有 <code>tests</code> → 要不要负责任;有 CI 配置 → 项目是不是活的</td></tr>
+        <tr><td>Releases</td><td>最近一次发版是什么时候?附了安装包吗?</td><td>有安装包 = 不用自己编译;半年没发版 = 谨慎</td></tr>
+        <tr><td>Commits / Activity</td><td>最近一次提交是几天前?频率高吗?</td><td><b>这是判断项目死活的最好指标</b>,比星数准得多</td></tr>
+        <tr><td>Insights → Pulse</td><td>Issue 和 PR 的处理速度</td><td>一堆 Issue 没人回 = 作者放弃了</td></tr>
+        <tr><td>Issues 搜索</td><td>在仓库内搜你的报错关键词</td><td>八成有人问过,并附了解决方案</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note" style="margin-top:16px">
+    <div class="icon-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-4 12.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26A7 7 0 0 0 12 2z"/></svg>
+    </div>
+    <p><b>关于星标数(stars):</b>它是热度,不是质量。小众领域的好项目星数天然少(比如嵌入式、内核方向几千星就非常厉害了)。<b>别用星数当唯一标准</b>,把"最近提交时间"和"维护者是谁"看得更重一点。</p>
+  </div>
+</section>
+
+<!-- ============ 07 ============ -->
+<section>
+  <div class="sec-head"><span class="sec-num">07</span><h2>关于 awesome —— 我的看法和一个升级版</h2></div>
+  <p class="sec-sub">你这个发现挺敏锐的。awesome 是一种"社区约定",不是 GitHub 的官方功能,但它之所以有效,是因为它解决了一个真实痛点。</p>
+
+  <div class="card" style="margin-bottom:16px">
+    <div class="icon-badge">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    </div>
+    <h3>为什么 awesome 这套路子能成立</h3>
+    <p style="font-size:14px;color:var(--ink-2);margin:0">
+      因为它把"选择成本"外包了。一个领域有几百个资源,你不知道该看哪个;而一份 awesome 清单是<b>有人替你筛过一遍并且愿意持续维护</b>的。你省下的不是阅读时间,是<b>做选择的时间</b>——这才是真正贵的那部分。
+    </p>
+    <p style="font-size:14px;color:var(--ink-2);margin:10px 0 0">
+      但 awesome 也有个软肋:<b>清单本身会过时</b>。所以用 awesome 的正确姿势是:<b>拿它当导航目录,而不是当终点</b>。看到感兴趣的就点进去,顺着链接往深处挖。
+    </p>
+  </div>
+
+  <h3>awesome 的升级版:这些"同类词"你也可以搜</h3>
+  <p>awesome 是一种命名约定,社区还有一堆同族约定。搜这些词,能挖到结构类似的资源库:</p>
+  <div class="pills" style="margin-top:12px">
+    <span class="pill">awesome-xxx</span>
+    <span class="pill">curated-xxx</span>
+    <span class="pill">xxx-resources</span>
+    <span class="pill">xxx-guide</span>
+    <span class="pill">xxx-roadmap</span>
+    <span class="pill">xxx-cheatsheet</span>
+    <span class="pill">xxx-interview</span>
+    <span class="pill">xxx-tutorial</span>
+    <span class="pill">xxx-books</span>
+    <span class="pill">xxx-handbook</span>
+    <span class="pill">xxx-learning</span>
+  </div>
+  <p style="margin-top:12px;font-size:14px;color:var(--ink-2)">
+    再叠上限定符会更准,比如:<code>awesome python in:name stars:&gt;1000</code>、<code>in:name roadmap language:python</code>。
+  </p>
+
+  <h3 style="margin-top:26px">几个大一就能用上的具体入口</h3>
+  <div class="tbl-wrap" style="margin-top:14px">
+    <table>
+      <thead><tr><th style="width:40%">搜什么 / 去哪</th><th>能得到什么</th></tr></thead>
+      <tbody>
+        <tr><td><code>awesome-computer-science</code></td><td>计算机科学全领域课程、教材、课程资源地图</td></tr>
+        <tr><td><code>awesome-cpp</code> / <code>awesome-python</code> / <code>awesome-os</code></td><td>各语言/各领域的优质库与工具清单</td></tr>
+        <tr><td><code>awesome-selfhosted</code></td><td>能自己部署的服务清单 —— 做课设项目时特别有用</td></tr>
+        <tr><td><code>public-apis</code></td><td>几百个免费公开 API,做项目时找数据源用</td></tr>
+        <tr><td><code>free-programming-books</code></td><td>免费正版编程书索引,按语言分类</td></tr>
+        <tr><td><code>build-your-own-x</code></td><td>从零实现数据库/编译器/操作系统 —— 学底层最好的入口</td></tr>
+        <tr><td><code>system-design-primer</code></td><td>系统设计面试题 + 图解,大二看正好</td></tr>
+        <tr><td><code>in:name "awesome" language:python stars:&gt;500</code></td><td>上面的语法组合,自己现场挖</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:26px">除了 awesome,这四条"挖宝路线"也值得知道</h3>
+  <div class="grid2" style="margin-top:14px">
+    <div class="card">
+      <h3>① 偷别人的收藏夹</h3>
+      <p style="font-size:14px;color:var(--ink-2);margin:0">打开 <code>github.com/某位大牛?tab=stars</code>,直接看他 star 过的全部项目。找到活跃的开发者,他的收藏夹就是一份高质量清单。<b>比 awesome 还私人化。</b></p>
+    </div>
+    <div class="card">
+      <h3>② 反向追溯</h3>
+      <p style="font-size:14px;color:var(--ink-2);margin:0">你在用的库(比如 requests、React)本身就在 GitHub 上。翻它的 Issue 和 PR,里面经常提到"有没有更轻量的替代方案",顺着就能挖出同类项目。</p>
+    </div>
+    <div class="card">
+      <h3>③ Trending / Explore / Topics</h3>
+      <p style="font-size:14px;color:var(--ink-2);margin:0"><code>github.com/trending</code> 按语言看当下热门,像刷朋友圈;不想主动搜的时候让它推给你。<code>github.com/topics/xxx</code> 按主题逛整类项目。</p>
+    </div>
+    <div class="card">
+      <h3>④ 找能上手的活干</h3>
+      <p style="font-size:14px;color:var(--ink-2);margin:0">搜 <code>label:"good first issue" state:open language:python</code>,能直接挑一个真实 bug 修掉当第一个 PR。<b>这是从"看客"变成"参与者"最快的路。</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 ============ -->
+<section>
+  <div class="sec-head"><span class="sec-num">08</span><h2>给你的大一路线:边玩边学</h2></div>
+  <p class="sec-sub">你说想"保持兴趣的前提下多获取知识"——这其实有个方法论:不要把"学习"和"玩"分成两件事,让玩的对象本身就是学习对象。</p>
+
+  <div class="final">
+    <h2 style="font-size:25px">这学期,按这个顺序走</h2>
+    <p class="sec-sub">每一步都有"做完"的标志,不靠意志力靠成就感。</p>
+    <ol>
+      <li><b>第一周:把 GitHub 官方自带的课刷一遍。</b>去 <code>skills.github.com</code>,里面有 <code>First day on GitHub</code>、<code>Introduction to Git</code>、<code>Resolve merge conflicts</code> 这些交互式课程,直接在 GitHub 上做,不用装任何东西。这一门课顶外面几十篇博客。</li>
+      <li><b>顺手申请 GitHub Education。</b>去 <code>education.github.com/pack</code> 用学号邮箱或学生证认证,立刻拿到:<b>GitHub Pro 免费</b>、<b>Copilot Student 免费</b>(AI 结对编程)、<b>Codespaces 每月 180 核时</b>(云端 VS Code,电脑再烂也有开发环境)、<b>JetBrains 全家桶</b>、<b>免费域名</b>、<b>Azure $100 额度</b>。这一件事的性价比超过你买任何一门课。<b>注意:学生身份要每年重新认证一次</b>,别让它悄悄过期。</li>
+      <li><b>立刻做一件小事:clone 一个项目并跑起来。</b>不要挑大的。找一个你喜欢的、能用 README 里三条命令跑起来的小项目(比如 <code>fastapi</code> 的 hello world、某个小工具)。<b>跑通的瞬间,就是对 GitHub 祛魅的瞬间。</b></li>
+      <li><b>建你自己的第一个仓库。</b>把每门课的作业放进去,每个项目一个 repo,认真写 README。这个 README 就是你以后找实习时能拿出手的东西。<b>别把作业做完就删掉。</b></li>
+      <li><b>每周末花 10 分钟扫 Trending</b>,star 三个你感兴趣的。<b>不要求看懂,只要求收藏。</b>半年后你会有一份属于自己的技术雷达。</li>
+      <li><b>找一个自己的小项目持续做。</b>哪怕是"把我每天背的单词做成一个网页"。有了一个持续的项目,GitHub 的所有机制(fork、branch、PR、CI)都会自然变成你需要的东西,而不是需要背的知识点。</li>
+      <li><b>半年后回头看,去提第一个 PR。</b>从 <code>good first issue</code> 里挑一个。你的第一条 PR 哪怕是改一个错别字,也比看一百篇教程更有用——<b>因为它会让你真正明白"开源协作"是怎么回事。</b></li>
+    </ol>
+  </div>
+
+  <div class="grid3" style="margin-top:22px">
+    <div class="card">
+      <div class="icon-badge">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+      </div>
+      <h3>今天就能做的三件小事</h3>
+      <ul style="font-size:13.5px;color:var(--ink-2);padding-left:18px;margin:0;display:grid;gap:5px">
+        <li>在 GitHub 任意页面按 <kbd>?</kbd></li>
+        <li>申请 GitHub Education</li>
+        <li>clone 一个项目,跑起来</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="icon-badge acc">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      </div>
+      <h3>除了 README,值得去看的</h3>
+      <ul style="font-size:13.5px;color:var(--ink-2);padding-left:18px;margin:0;display:grid;gap:5px">
+        <li>Issues(解决问题的现场)</li>
+        <li>Pull Requests(看别人怎么改代码)</li>
+        <li>Releases(拿现成的能跑版本)</li>
+        <li>LICENSE(能不能用)</li>
+        <li>Actions(项目怎么自动化的)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="icon-badge">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <h3>保持兴趣的关键</h3>
+      <p style="font-size:13.5px;color:var(--ink-2);margin:0">别做"教程收藏家"。<b>收藏教程的快乐会很快腻,把自己的东西发出去的快乐不会。</b>发出去才有反馈,反馈才有内驱力。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>这份指南里的操作流程(Edits、Labels、Releases、Actions、fork/clone/branch/PR 的机制)和快捷键是 GitHub 长期稳定的行为;涉及学生权益的部分(Copilot Student、Codespaces 每月 180 核时、JetBrains 学生授权)依据 2026 年 10 月的官方说明整理,<b>具体额度以 education.github.com 当期页面为准</b>——这类免费权益经常调整,值得自己再确认一次。</p>
+</footer>
+
+</div>
+</body>
+</html>

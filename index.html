@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的知识库 · 首页</title>
+<meta name="description" content="用 GitHub Pages 搭的个人知识库">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="inner">
+    <a class="brand" href="index.html">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      我的知识库
+    </a>
+    <span class="spacer"></span>
+    <a class="navlink" href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+    <a class="navlink" href="https://skills.github.com" target="_blank" rel="noopener">官方课程</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="hero">
+    <h1>我的知识库</h1>
+    <p class="lede">
+      这里是边玩边学攒下来的东西。每一页都是一次真实的练习,
+      也都是 GitHub 提交历史的一部分。
+    </p>
+  </div>
+
+  <section style="padding-top:8px">
+    <div class="sec-head"><span class="sec-num">01</span><h2>目录</h2></div>
+    <p class="sec-sub">点开任意一篇。</p>
+
+    <div class="kb-grid">
+      <a class="kb-card" href="pages/github-101.html">
+        <div class="kicker">工具 · 入门</div>
+        <h3>GitHub 生存指南</h3>
+        <p>fork / clone / branch / PR 到底有什么区别?为什么"回到上一页"要找浏览器?
+           一页图解讲清 GitHub 的全部核心概念、搜索语法和实用技巧。</p>
+        <span class="more">
+          开始阅读
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+
+      <a class="kb-card" href="pages/github-101.html">
+        <div class="kicker">占位 · 待补</div>
+        <h3>下一篇写什么?</h3>
+        <p>复制上面那张卡片的 HTML,改改标题和正文,存成 pages/xxx.html,
+           然后在下面加一行 &lt;a&gt; 就能出现在首页。</p>
+        <span class="more">
+          去看怎么加
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+    </div>
+
+    <div class="addbox">
+      <h3>怎么加一篇新文章</h3>
+      <p style="font-size:14px;color:var(--ink-2)">整个流程只有三步,一分钟搞定,连命令行都不用碰。</p>
+      <ol>
+        <li>在 <code>pages/</code> 文件夹里新建一个 <code>xxx.html</code>,内容照抄现有的这篇,把标题、正文、<code>href="../assets/style.css"</code> 和 <code>href="../index.html"</code> 改掉就行</li>
+        <li>回到 <code>index.html</code>,在 <code>&lt;div class="kb-grid"&gt;</code> 里复制一段 <code>&lt;a class="kb-card"&gt;</code>,改掉 <code>href</code> 和标题</li>
+        <li>在 GitHub 网页上点 <b>Commit changes</b> 提交 —— <b>几十秒后线上自动更新</b>,不用重新部署任何东西</li>
+      </ol>
+      <pre style="margin-top:14px"><span class="c">&lt;a</span> <span class="k">class</span>=<span class="k">"kb-card"</span> <span class="k">href</span>=<span class="k">"pages/我的新文章.html"</span><span class="c">&gt;</span>
+  <span class="c">&lt;div</span> <span class="k">class</span>=<span class="k">"kicker"</span><span class="c">&gt;</span>分类 · 新标签<span class="c">&lt;/div&gt;</span>
+  <span class="c">&lt;h3&gt;</span>文章标题<span class="c">&lt;/h3&gt;</span>
+  <span class="c">&lt;p&gt;</span>一段简介,告诉未来的自己这页讲了什么。<span class="c">&lt;/p&gt;</span>
+<span class="c">&lt;/a&gt;</span></pre>
+    </div>
+  </section>
+
+  <section style="padding-top:44px">
+    <div class="sec-head"><span class="sec-num">02</span><h2>还没写的坑,记在这</h2></div>
+    <p class="sec-sub">想到什么就先扔进来,写的时候不用整理。</p>
+    <div class="kv">
+      <div class="kv-row"><span class="kv-k">Linux</span><span class="kv-v">常用命令、vim、进程/权限/管道 —— 大一够了</span></div>
+      <div class="kv-row"><span class="kv-k">Python</span><span class="kv-v">语法速查 → 标准库 → 写小工具 → 打包成命令行</span></div>
+      <div class="kv-row"><span class="kv-k">数据结构</span><span class="kv-v">用 Python 实现一遍链表/树/哈希表,比看定义有用</span></div>
+      <div class="kv-row"><span class="kv-k">网络</span><span class="kv-v">手写一个 HTTP 服务器,理解请求/响应到底长什么样</span></div>
+      <div class="kv-row"><span class="kv-k">高等数学</span><span class="kv-v">把极限/导数/积分的直觉写成图文,和代码互相印证</span></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>用 GitHub Pages 搭建 · 纯静态,没有后端,不要钱,断网也能看(存本地了)。<br>
+    每次改完只要 commit 一下,线上几十秒自动更新 —— 这个"写完就自动上线"的感觉,是真的很爽。</p>
+  </footer>
+
+</div>
+</body>
+</html>
